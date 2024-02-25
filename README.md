@@ -1,1 +1,0 @@
-# Clash-Royale-App
