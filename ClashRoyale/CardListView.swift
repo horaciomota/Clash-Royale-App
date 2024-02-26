@@ -12,7 +12,7 @@ struct CardListView: View {
     @State private var selectedCard: Card? = nil
     @State private var isLoading = false
 
-    let gridItems = [GridItem(.flexible(), spacing: 6), GridItem(.flexible(), spacing: 6)]
+    let gridItems = [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)]
 
     var body: some View {
         ScrollView {
@@ -21,35 +21,37 @@ struct CardListView: View {
                     Button(action: {
                         selectedCard = card
                     }) {
-                        VStack {
-                            // Exibição da imagem da carta
-                            AsyncImage(url: URL(string: card.iconUrls.medium)) { phase in
-                                switch phase {
-                                case let .success(image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 150, height: 200)
-                                        .cornerRadius(8)
-                                default:
-                                    ProgressView()
-                                        .progressViewStyle(CircularProgressViewStyle())
-                                        .frame(width: 50, height: 50)
-                                }
-                            }
+                        ZStack(alignment: .topTrailing) {
+                                                 // Exibição da imagem da carta
+                                                 AsyncImage(url: URL(string: card.iconUrls.medium)) { phase in
+                                                     switch phase {
+                                                     case .success(let image):
+                                                         image
+                                                             .resizable()
+                                                             .aspectRatio(contentMode: .fit)
+                                                             .frame(width: 100)
+                                                             .cornerRadius(8)
+                                                     default:
+                                                         ProgressView()
+                                                             .progressViewStyle(CircularProgressViewStyle())
+                                                             .frame(width: 50, height: 50)
+                                                     }
+                                                 }
 
-                            // Nome da carta e nível máximo
-                            VStack(alignment: .leading) {
-                                Text(card.name)
-                                    .font(.headline)
-                                Text("Nível Máximo: \(card.maxLevel)")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                        .padding()
-                        .background(Color.secondary.opacity(0.1))
-                        .cornerRadius(8)
+                            // Número de mana
+                                                       Circle()
+                                                           .foregroundColor(.purple)
+                                                           .frame(width: 40, height: 30)
+                                                           .overlay(
+                                                            Text("\(card.elixirCost != nil ? "\(card.elixirCost!)" : "N/A")")
+                                                                   .font(.caption)
+                                                                   .foregroundColor(.white)
+                                                           )
+                                                           .offset(x: 20, y: -20)
+                                                   }
+                                                   .padding()
+                                                   .background(Color.secondary.opacity(0.1))
+                                                   .cornerRadius(8)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
