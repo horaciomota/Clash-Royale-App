@@ -8,9 +8,13 @@
 import Foundation
 
 struct Card: Decodable {
-    let name: String
     let id: Int
+    let name: String
+    let maxLevel: Int
+    let maxEvolutionLevel: Int?
+    let elixirCost: Int?
     let iconUrls: IconUrls
+    let rarity: String
 
 }
 

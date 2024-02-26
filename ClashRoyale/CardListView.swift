@@ -28,8 +28,8 @@ struct CardListView: View {
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(width: 250, height: 250)
-                                .cornerRadius(8)
+                                .frame(width: 200, height: 200)
+                                .cornerRadius(6)
                         default:
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
