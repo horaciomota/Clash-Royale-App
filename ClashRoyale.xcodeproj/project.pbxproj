@@ -14,7 +14,7 @@
 		3DED80B82B8BD68100CF3C4A /* ClashRoyaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80B72B8BD68100CF3C4A /* ClashRoyaleTests.swift */; };
 		3DED80C22B8BD68100CF3C4A /* ClashRoyaleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80C12B8BD68100CF3C4A /* ClashRoyaleUITests.swift */; };
 		3DED80C42B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80C32B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift */; };
-		3DED80D12B8BD7F100CF3C4A /* ClashRoyaleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D02B8BD7F100CF3C4A /* ClashRoyaleApi.swift */; };
+		3DED80D12B8BD7F100CF3C4A /* CardApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D02B8BD7F100CF3C4A /* CardApi.swift */; };
 		3DED80D32B8BD91800CF3C4A /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D22B8BD91800CF3C4A /* CardListView.swift */; };
 		3DED80D52B8BDA2500CF3C4A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D42B8BDA2500CF3C4A /* CardModel.swift */; };
 /* End PBXBuildFile section */
@@ -47,7 +47,7 @@
 		3DED80BD2B8BD68100CF3C4A /* ClashRoyaleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClashRoyaleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DED80C12B8BD68100CF3C4A /* ClashRoyaleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashRoyaleUITests.swift; sourceTree = "<group>"; };
 		3DED80C32B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashRoyaleUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3DED80D02B8BD7F100CF3C4A /* ClashRoyaleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashRoyaleApi.swift; sourceTree = "<group>"; };
+		3DED80D02B8BD7F100CF3C4A /* CardApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardApi.swift; sourceTree = "<group>"; };
 		3DED80D22B8BD91800CF3C4A /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
 		3DED80D42B8BDA2500CF3C4A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,13 +100,17 @@
 		3DED80A52B8BD67F00CF3C4A /* ClashRoyale */ = {
 			isa = PBXGroup;
 			children = (
-				3DED80A62B8BD67F00CF3C4A /* ClashRoyaleApp.swift */,
+				3DED80DD2B8D22BC00CF3C4A /* App */,
+				3DED80D82B8D224C00CF3C4A /* Models */,
+				3DED80D72B8D224600CF3C4A /* Views */,
+				3DED80D62B8D223C00CF3C4A /* ViewModels */,
+				3DED80DC2B8D22AB00CF3C4A /* Supporting Files */,
+				3DED80DB2B8D22A100CF3C4A /* Extensions */,
+				3DED80DA2B8D229900CF3C4A /* Helpers */,
+				3DED80D92B8D225300CF3C4A /* Services  */,
 				3DED80A82B8BD67F00CF3C4A /* ContentView.swift */,
 				3DED80AA2B8BD68000CF3C4A /* Assets.xcassets */,
 				3DED80AC2B8BD68000CF3C4A /* Preview Content */,
-				3DED80D02B8BD7F100CF3C4A /* ClashRoyaleApi.swift */,
-				3DED80D22B8BD91800CF3C4A /* CardListView.swift */,
-				3DED80D42B8BDA2500CF3C4A /* CardModel.swift */,
 			);
 			path = ClashRoyale;
 			sourceTree = "<group>";
@@ -134,6 +138,66 @@
 				3DED80C32B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift */,
 			);
 			path = ClashRoyaleUITests;
+			sourceTree = "<group>";
+		};
+		3DED80D62B8D223C00CF3C4A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3DED80D72B8D224600CF3C4A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3DED80D22B8BD91800CF3C4A /* CardListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3DED80D82B8D224C00CF3C4A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3DED80D42B8BDA2500CF3C4A /* CardModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3DED80D92B8D225300CF3C4A /* Services  */ = {
+			isa = PBXGroup;
+			children = (
+				3DED80D02B8BD7F100CF3C4A /* CardApi.swift */,
+			);
+			path = "Services ";
+			sourceTree = "<group>";
+		};
+		3DED80DA2B8D229900CF3C4A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3DED80DB2B8D22A100CF3C4A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3DED80DC2B8D22AB00CF3C4A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DED80DD2B8D22BC00CF3C4A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3DED80A62B8BD67F00CF3C4A /* ClashRoyaleApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DED80A92B8BD67F00CF3C4A /* ContentView.swift in Sources */,
-				3DED80D12B8BD7F100CF3C4A /* ClashRoyaleApi.swift in Sources */,
+				3DED80D12B8BD7F100CF3C4A /* CardApi.swift in Sources */,
 				3DED80D32B8BD91800CF3C4A /* CardListView.swift in Sources */,
 				3DED80A72B8BD67F00CF3C4A /* ClashRoyaleApp.swift in Sources */,
 				3DED80D52B8BDA2500CF3C4A /* CardModel.swift in Sources */,
