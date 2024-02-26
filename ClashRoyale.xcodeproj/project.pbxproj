@@ -16,6 +16,7 @@
 		3DED80C42B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80C32B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift */; };
 		3DED80D12B8BD7F100CF3C4A /* ClashRoyaleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D02B8BD7F100CF3C4A /* ClashRoyaleApi.swift */; };
 		3DED80D32B8BD91800CF3C4A /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D22B8BD91800CF3C4A /* CardListView.swift */; };
+		3DED80D52B8BDA2500CF3C4A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DED80D42B8BDA2500CF3C4A /* CardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		3DED80C32B8BD68100CF3C4A /* ClashRoyaleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashRoyaleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3DED80D02B8BD7F100CF3C4A /* ClashRoyaleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClashRoyaleApi.swift; sourceTree = "<group>"; };
 		3DED80D22B8BD91800CF3C4A /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
+		3DED80D42B8BDA2500CF3C4A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				3DED80AC2B8BD68000CF3C4A /* Preview Content */,
 				3DED80D02B8BD7F100CF3C4A /* ClashRoyaleApi.swift */,
 				3DED80D22B8BD91800CF3C4A /* CardListView.swift */,
+				3DED80D42B8BDA2500CF3C4A /* CardModel.swift */,
 			);
 			path = ClashRoyale;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				3DED80D12B8BD7F100CF3C4A /* ClashRoyaleApi.swift in Sources */,
 				3DED80D32B8BD91800CF3C4A /* CardListView.swift in Sources */,
 				3DED80A72B8BD67F00CF3C4A /* ClashRoyaleApp.swift in Sources */,
+				3DED80D52B8BDA2500CF3C4A /* CardModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

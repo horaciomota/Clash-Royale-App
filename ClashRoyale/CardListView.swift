@@ -20,6 +20,22 @@ struct CardListView: View {
             } else {
                 List(cards, id: \.id) { card in
                     Text(card.name)
+
+                    // Exibição da imagem da carta
+                    AsyncImage(url: URL(string: card.iconUrls.medium)) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 250, height: 250)
+                                .cornerRadius(8)
+                        default:
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .frame(width: 50, height: 50)
+                        }
+                    }
                 }
                 .refreshable {
                     await fetchCards()
