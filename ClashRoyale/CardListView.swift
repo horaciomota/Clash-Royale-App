@@ -9,54 +9,69 @@ import SwiftUI
 
 struct CardListView: View {
     @State private var cards: [Card] = []
+    @State private var selectedCard: Card? = nil
     @State private var isLoading = false
 
-    var body: some View {
-        VStack {
-            if isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-                    .padding()
-            } else {
-                List(cards, id: \.id) { card in
-                    Text(card.name)
+    let gridItems = [GridItem(.flexible(), spacing: 6), GridItem(.flexible(), spacing: 6)]
 
-                    // Exibição da imagem da carta
-                    AsyncImage(url: URL(string: card.iconUrls.medium)) { phase in
-                        switch phase {
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 200, height: 200)
-                                .cornerRadius(6)
-                        default:
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .frame(width: 50, height: 50)
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: gridItems, spacing: 6) {
+                ForEach(cards) { card in
+                    Button(action: {
+                        selectedCard = card
+                    }) {
+                        VStack {
+                            // Exibição da imagem da carta
+                            AsyncImage(url: URL(string: card.iconUrls.medium)) { phase in
+                                switch phase {
+                                case let .success(image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 150, height: 200)
+                                        .cornerRadius(8)
+                                default:
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                        .frame(width: 50, height: 50)
+                                }
+                            }
+
+                            // Nome da carta e nível máximo
+                            VStack(alignment: .leading) {
+                                Text(card.name)
+                                    .font(.headline)
+                                Text("Nível Máximo: \(card.maxLevel)")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
                         }
+                        .padding()
+                        .background(Color.secondary.opacity(0.1))
+                        .cornerRadius(8)
                     }
-                }
-                .refreshable {
-                    await fetchCards()
-                }
-                .onAppear {
-                    Task {
-                        await fetchCards()
-                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
+            .padding()
+            .navigationTitle("Cartas")
         }
-        .navigationTitle("Cards")
+        .onAppear {
+            Task {
+                await fetchCards()
+            }
+        }
     }
 
+    //Funcao usada para dar fetch nas cartas na view principal
     func fetchCards() async {
         isLoading = true
         do {
             let api = ClashRoyaleAPI()
-            self.cards = try await api.fetchAllCards()
+            cards = try await api.fetchAllCards()
         } catch {
-            print("Error fetching cards: \(error)")
+            print("Erro ao buscar as cartas: \(error)")
         }
         isLoading = false
     }

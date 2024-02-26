@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Decodable {
+struct Card: Decodable, Identifiable {
     let id: Int
     let name: String
     let maxLevel: Int
