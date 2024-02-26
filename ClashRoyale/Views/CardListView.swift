@@ -1,23 +1,17 @@
-//
-//  CardListView.swift
-//  ClashRoyale
-//
-//  Created by Horacio Mota on 25/02/24.
-//
-
 import SwiftUI
 
 struct CardListView: View {
     @State private var cards: [Card] = []
     @State private var selectedCard: Card? = nil
     @State private var isLoading = false
+    @State private var searchText: String = ""
 
-    let gridItems = [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)]
+    let gridItems = [GridItem(.flexible(), spacing: 0), GridItem(.flexible(), spacing: 0)]
 
     var body: some View {
         ScrollView {
             LazyVGrid(columns: gridItems, spacing: 0) {
-                ForEach(cards) { card in
+                ForEach(filteredCards) { card in
                     Button(action: {
                         selectedCard = card
                     }) {
@@ -29,7 +23,7 @@ struct CardListView: View {
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(width: 110)
+                                        .frame(width: 150)
                                         .cornerRadius(1)
                                 default:
                                     ProgressView()
@@ -55,8 +49,13 @@ struct CardListView: View {
                     .buttonStyle(PlainButtonStyle())
                 }
             }
-            .padding()
             .navigationTitle("Cartas")
+            .padding()
+        }
+        .searchable(text: $searchText) {
+            ForEach(cards) { card in
+                Text(card.name).searchCompletion(card.name)
+            }
         }
         .onAppear {
             Task {
@@ -65,7 +64,16 @@ struct CardListView: View {
         }
     }
 
-    // Funcao usada para dar fetch nas cartas na view principal
+    // Função para filtrar as cartas com base no texto de pesquisa
+    var filteredCards: [Card] {
+        if searchText.isEmpty {
+            return cards
+        } else {
+            return cards.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
+
+    // Função para buscar as cartas
     func fetchCards() async {
         isLoading = true
         do {
